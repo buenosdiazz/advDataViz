@@ -10,12 +10,15 @@
 */
 
 html {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 body {
   color: #222;
-  font-family: sans-serif;
+  font-family: raleway, sans-serif;
+font-style: normal;
+font-weight: 100;
+    letter-spacing: .2px;
   margin-left: 1rem;
 }
 
@@ -33,6 +36,24 @@ header {
 header h1,
 header nav {
   display: inline-block;
+}
+
+a {
+    color: hsla(341, 98%, 44%, 0.85);
+    text-decoration: none;
+}
+
+
+h1 {
+    font-size: 42px;
+    letter-spacing: 0.01em;
+    font-weight: 300;
+}
+
+h2 {
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    font-size: 24px;
 }
 
 header nav ul {
