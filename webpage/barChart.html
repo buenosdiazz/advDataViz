@@ -77,6 +77,7 @@
                 millions,
                 {
                     title: " Top 5 Largest Opening Weekends of All-Time",
+                    subtitle: "(In Million U.S. $)",
 
                   bars: {
                       show: true,
@@ -85,12 +86,16 @@
                       fillOpacity: 1,
                       lineWidth: 0,
                   },
+                     HtmlText: false,
                     yaxis: {
                         min: 0,
                         tickDecimals: 0,
+                        title: "Millions $",
+                        titleAngle: 90,
                     },
                     xaxis: {
                         ticks: movies,
+                        title: "Movies",
                     },
                     grid:{
                         horizontalLines: false,

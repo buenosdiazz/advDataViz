@@ -80,9 +80,12 @@ From 1927/8 to 2001</h2>
         {
             pie: {
                 show: true,
+                shadowSize: 0,
+                fillOpacity: 1,
                 labelFormatter: function(pie, slice){
                     return (slice/pie *100).toPrecision(2) +"%"
                 },
+
 
             },
             yaxis: {
