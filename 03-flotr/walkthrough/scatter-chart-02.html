@@ -14,12 +14,39 @@
     <script src="js/underscore.min.js"></script>
     <script>
 
-      var stanton  = [[59, 163]]
-      var judge    = [[52, 208]]
-      var martinez = [[45, 128]]
-      var davis    = [[43, 195]]
-      var gallo    = [[41, 196]]
+      var stanton  = [[59, 163]];
+      var judge    = [[52, 208]];
+      var martinez = [[45, 128]];
+      var davis    = [[43, 195]];
+      var gallo    = [[41, 196]];
 
+        window.onload = function(){
+            Flotr.draw(
+            document.getElementById("chart"),
+                [
+                {data: stanton,
+                label: "G. Stanton",
+                points: {show: true},
+                 color: "#FF6600"   },
+                    { data: judge,
+                    label: "A. Judge",
+                     points: {show: true},
+                     color: "#003087"
+                    }
+                ],
+                {
+                    title: "Top 5 Power Hitters, 2017",
+                    subtitle: "(Strikeouts vs. Home Runs)",
+                    xaxis:{
+                        min: 35, 
+                        max: 65,
+                        tickDecimals: 0,
+                        
+                    }
+                }
+                
+            )
+        }
     </script>
 
   </body>

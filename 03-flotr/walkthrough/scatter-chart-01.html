@@ -31,6 +31,42 @@
         { label: "Mike Moustakas",    hr: 38, k: 94  },
         { label: "Justin Smoak",      hr: 38, k: 128 }
       ]
+      
+      var compiled_data = [];
+        
+    _(power_hitters).each(
+    function(data){
+    compiled_data.push([data.hr, data.k])
+    }    );
+        
+        window.onload= function(){
+            Flotr.draw(
+            document.getElementById("chart"),
+            [
+                {
+                    data: compiled_data,
+                    points: {show:true}
+                }
+            ],
+            {
+                title:"Power Hitters, 2017",
+                subtitle: "(Strikeouts vs. Home Runs)",
+                xaxis:{
+                    tickDecimals: 0,
+                    min: 35,
+                    max: 65, 
+                    title: "Home runs",
+                }, 
+                yaxis: {
+                    tickDecimals: 0,
+                    min: 85,
+                    max: 230,
+                    title: "Strike Outs",
+
+                }
+            }
+            )
+        }
     </script>
 
   </body>
