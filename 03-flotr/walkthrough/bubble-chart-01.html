@@ -45,6 +45,48 @@
         { north: 32.4, west: 84.9, wind: 35 }
       ];
 
+        function getPoints(source){
+            var result = [];
+
+            _(source).each(
+            function(data){
+                result.push([(data.west * -1), data.north, data.wind])
+            }
+            );
+            return result;
+        }
+
+        window.onload = function() {
+            Flotr.draw(
+            document.getElementById("chart"),
+                [
+                {
+                    data: getPoints(irma),
+                    bubbles: {show: true, baseRadius: 0.075},
+                    color: "#00905A",
+                }
+                ],
+            {
+                xaxis: {
+                    min: -86.0,
+                    max: -78.0,
+                },
+                yaxis: {
+                    min: 23.5,
+                    max: 32.0
+                },
+
+
+                    grid:{
+                        backgroundImage: "img/fl.png",
+                        horizonalLines: false,
+                        verticalLines: false,
+                    }
+                }
+
+            )
+        }
+
     </script>
 
   </body>

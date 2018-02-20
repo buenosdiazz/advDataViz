@@ -211,7 +211,7 @@ footer p:last-child:after {
 #chart {
   background-color: #eee;
   border: 1px dotted #ccc;
-  width: 700px;
-  height: 700px;
+  width: 800px;
+  height: 600px;
   padding-left: 1rem;
 }
