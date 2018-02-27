@@ -82,33 +82,27 @@
       },
 
     ]
-    // We accumulate a sum of player data so we have something to
-    // compare each player to.
+
     var all = {
       oscars: 10,
       goldenglobes: 16,
       emmys: 3
 
     }
-    // Our labels define each point on the radar. This is similar to
-    // how we map the index of a bar chart to a label.
+
     var labels = [
       [0, "Oscars"],
       [1, "Golden Globes"],
       [2, "Emmy Awards"],
 
     ];
-    // The getPlayer function iterates through each player in our
-    // players array. If the player name in the array object matches
-    // what is passed into the function, it returns that player's
-    // data.
+
     var getActor = function(name) {
       for (i = 0; i < actors.length; i++) {
         if (actors[i].actor === name) return actors[i];
       }
     }
-    // The playerData function uses the team object as a foundation
-    // for the keys we want to collect from each player.
+
     var actorData = function(name) {
       var obj = {};
       var i = 0;
@@ -150,7 +144,7 @@
       </section>
 
       <section id="writing">
-        <p>  <a href="https://www.rottentomatoes.com/celebrity/leonardo_di_caprio/" target="_blank"> Source</a></p>
+        <p>  <a href="https://www.rottentomatoes.com" target="_blank"> Source</a></p>
       </section>
 
     </main>
@@ -161,11 +155,6 @@
       <p>Spring 2018</p>
     </footer>
 
-    <!--
-      Include necessary javascript libraries / scripts here (unless
-      noted otherwise; some libraries need to be added in <head>).
-      <script href="#"></script>
-    -->
 
   </body>
 </html>
