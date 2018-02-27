@@ -77,7 +77,26 @@
       [4, "Blocks"]
     ]
 
-    </script>
+    var getPlayer = function(name)
+{
+    for(i=0; i< players.length; i++) {
+        if(players[i].player === name) return players[i];
+    }
+}
+ var playerData = function(name) {
+     var obj= {};
+     var i = 0;
+     obj.label = name;
+     obj.data = [];
+
+     for (var key in team) {
+         obj.data.push([i, 100*getPlayer(name)[key]/ team[key]])
+         i++;
+     }
+     return obj;
+ }
+
+      </script>
 
   </body>
 </html>

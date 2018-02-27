@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Data Visualization | Title of Example</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/flotr2.min.js"></script>
+  </head>
+
+
+  <body id="inner">
+
+    <header>
+      <h1>Data Visualization</h1>
+
+      <!--
+        An optional navigation ... you may want to include a link to
+        your personal portfolio, email, etc.
+      -->
+
+     <nav>
+        <ul>
+          <li><a href="http://carodiaz.co" target="_blank">Portfolio</a></li>
+          <li><a href="mailto:cdiaz17@miami.edu">Email</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <main>
+
+      <!--
+        It is not ideal to exclude a menu from inner pages, but the
+        focus is on data visualization, not site design. This
+        'breadcrumb' approach will keep things simple while the
+        site added to week-to-week, but considers the necessity to
+        to swap out the nav on each page (for the completed one on
+        'index.html') and make minor modifications to 'style.css' to
+        create a more robust site nav once all examples are complete.
+      -->
+
+      <nav>
+        <p>&laquo; <a href="index.html">Return home</a></p>
+      </nav>
+
+      <section id="example">
+        <p class="message">You need a browser which supports CSS Grid! Why not <a href="https://browsehappy.com/">download</a> one which does?</p>
+
+        <h2>Leonardo Dicaprio's Rotten Tomato Scores </h2>
+
+
+
+
+        <div id="chart">
+          <p>An example goes here.</p>
+        </div>
+
+          <script>
+
+      // each team is a data point, hence nesting of arrays to create
+      // the series of points for colors to be applied
+
+       var first  = [[1991, 0]];
+      var second  = [[1992, 37]];
+      var third = [[1993, 82.5]];
+      var fourth    = [[1995, 42.3]];
+      var fifth    = [[1996, 76]];
+     var sixth = [[1997, 88]];
+              var seventh = [[1998, 52.5]];
+
+              var eight = [[2000, 19]];
+              var nineth = [[2002, 85.5]];
+              var ten = [[2004, 77.5]];
+              var eleven = [[2006, 76.5]];
+              var twelve = [[2007, 67]];
+              var thirteen = [[2008, 61]];
+              var fourteen = [[2009, 56]];
+              var fifteen = [[2010, 80.3]];
+              var sixteen = [[2011, 45.6]];
+              var seventeen = [[2012, 87]];
+              var eighteen = [[2013, 47.25]];
+             var nineteen = [[2014, 100]];
+              var twenty = [[2015, 80]];
+              var twentyone = [[2016, 75.5]];
+              var twentytwo = [[2017, 35]];
+
+       window.onload = function() {
+        Flotr.draw(
+          document.getElementById("chart"),
+          [
+
+
+            {
+              data: first,
+              points: {show: true},
+                 color: "#618358"
+              //color: "#003831"
+            },
+            {
+              data: second,
+              points: {show: true},
+              color: "#618358"
+            },
+                {
+              data: third,
+              points: {show: true},
+              color: "#FFFF00"
+            },  {
+              data: fourth,
+              points: {show: true},
+              color: "#618358"
+            },
+                {
+              data: fifth,
+                    label: "Certified Fresh Rating 75% or more",
+              points: {show: true},
+                 color: "#FFFF00"
+              //color: "#003831"
+            },
+            {
+              data: sixth,
+              points: {show: true},
+             color: "#FFFF00"
+            },
+                {
+              data: seventh,
+              points: {show: true},
+              color: "#618358"
+            },  {
+              data: eight,
+              points: {show: true},
+              color: "#618358"
+            },
+                {
+              data: nineth,
+              points: {show: true},
+              color: "#FFFF00"
+            },
+                {
+              data: ten,
+              points: {show: true},
+              color: "#FFFF00"
+            },
+                {
+              data: eleven,
+              points: {show: true},
+              color: "#FFFF00"
+            },
+
+                {
+                     label: "Fresh 60%-74%",
+              data: twelve,
+              points: {show: true},
+              color: "#C0111F"
+            },
+
+                {
+              data: thirteen,
+              points: {show: true},
+              color: "#C0111F"
+            },
+
+                {
+              data: fourteen,
+              points: {show: true},
+              color: "#618358"
+            },
+
+                {
+              data: fifteen,
+              points: {show: true},
+              color: "#FFFF00"
+            },
+
+                {
+                     label: "Rotten 59% or less",
+              data: sixteen,
+              points: {show: true},
+              color: "#618358"
+            },
+                {
+              data: seventeen,
+              points: {show: true},
+              color: "#FFFF00"
+            },
+
+                {
+              data: eighteen,
+              points: {show: true},
+              color: "#618358"
+            },
+
+                {
+              data: nineteen,
+              points: {show: true},
+              color: "#FFFF00"
+            },
+
+                {
+              data: twenty,
+              points: {show: true},
+              color: "#FFFF00"
+            },
+
+                {
+              data: twentyone,
+              points: {show: true},
+              color: "#FFFF00"
+            },
+
+                {
+              data: twentytwo,
+              points: {show: true},
+              color: "#618358"
+            },
+
+
+
+
+
+          ],
+          {
+            HtmlText: false,
+            title: "Leonardo Dicaprio's Rotten Tomato Scores",
+            subtitle: "(Strikeouts vs. Home Runs)",
+            xaxis: {
+              min: 1990,
+              max: 2018,
+              tickDecimals: 0,
+              title: "Years"
+            },
+            yaxis: {
+              min: 0,
+              max: 100,
+              tickDecimals: 0,
+              title: "Average Rotten Tomatoes Score Per Year"
+            }
+          }
+        )
+      }
+    </script>
+
+
+      </section>
+
+      <section id="writing">
+        <p>As you can see, Leonardo Dicaprio's films either do very well or not so well, only in 2007 and 2008 was he in the "Fresh" category.   <a href="https://www.rottentomatoes.com/celebrity/leonardo_di_caprio/" target="_blank"> Source</a></p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p><a href="mailto:email">Your Name</a></p>
+      <p>JMM 692: Interactive Data Visualization</p>
+      <p>Spring 2018</p>
+    </footer>
+
+    <!--
+      Include necessary javascript libraries / scripts here (unless
+      noted otherwise; some libraries need to be added in <head>).
+      <script href="#"></script>
+    -->
+
+  </body>
+</html>

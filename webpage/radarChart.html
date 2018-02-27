@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Data Visualization | Title of Example</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/flotr2.min.js"></script>
+  </head>
+
+
+  <body id="inner">
+
+    <header>
+      <h1>Data Visualization</h1>
+
+      <!--
+        An optional navigation ... you may want to include a link to
+        your personal portfolio, email, etc.
+      -->
+
+     <nav>
+        <ul>
+          <li><a href="http://carodiaz.co" target="_blank">Portfolio</a></li>
+          <li><a href="mailto:cdiaz17@miami.edu">Email</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <main>
+
+      <!--
+        It is not ideal to exclude a menu from inner pages, but the
+        focus is on data visualization, not site design. This
+        'breadcrumb' approach will keep things simple while the
+        site added to week-to-week, but considers the necessity to
+        to swap out the nav on each page (for the completed one on
+        'index.html') and make minor modifications to 'style.css' to
+        create a more robust site nav once all examples are complete.
+      -->
+
+      <nav>
+        <p>&laquo; <a href="index.html">Return home</a></p>
+      </nav>
+
+      <section id="example">
+        <p class="message">You need a browser which supports CSS Grid! Why not <a href="https://browsehappy.com/">download</a> one which does?</p>
+
+        <h2>Comparing Award Winning Actors</h2>
+
+
+
+
+   <div id="chart"></div>
+
+    <script src="js/flotr2.min.js"></script>
+    <script>
+    var actors = [
+      {
+        actor: "Meryl Streep",
+        oscars: 3,
+        goldenglobes: 9,
+        emmys: 3,
+      },
+      {
+        actor: "Robert De Niro",
+        oscars: 2,
+        goldenglobes: 2,
+        emmys: 0,
+      },
+      {
+        actor: "Daniel Day-Lewis",
+        oscars: 3,
+        goldenglobes: 2,
+        emmys: 0,
+      },
+     {
+        actor: "Denzel Washington",
+        oscars: 2,
+        goldenglobes: 3,
+        emmys: 0,
+      },
+
+    ]
+    // We accumulate a sum of player data so we have something to
+    // compare each player to.
+    var all = {
+      oscars: 10,
+      goldenglobes: 16,
+      emmys: 3
+
+    }
+    // Our labels define each point on the radar. This is similar to
+    // how we map the index of a bar chart to a label.
+    var labels = [
+      [0, "Oscars"],
+      [1, "Golden Globes"],
+      [2, "Emmy Awards"],
+
+    ];
+    // The getPlayer function iterates through each player in our
+    // players array. If the player name in the array object matches
+    // what is passed into the function, it returns that player's
+    // data.
+    var getActor = function(name) {
+      for (i = 0; i < actors.length; i++) {
+        if (actors[i].actor === name) return actors[i];
+      }
+    }
+    // The playerData function uses the team object as a foundation
+    // for the keys we want to collect from each player.
+    var actorData = function(name) {
+      var obj = {};
+      var i = 0;
+      obj.label = name;
+      obj.data = [];
+      for (var key in all) {
+        obj.data.push([i, 100*getActor(name)[key]/all[key]]);
+        i++;
+      }
+      return obj;
+    }
+    window.onload = function() {
+      Flotr.draw(
+        document.getElementById("chart"),
+        [
+          actorData("Meryl Streep"),
+          actorData("Robert De Niro"),
+          actorData("Daniel Day-Lewis"),
+          actorData("Denzel Washington"),
+
+        ],
+        {
+          title: "Award Winners",
+          radar: { show: true },
+          grid: { circular: true },
+          xaxis: { ticks: labels },
+          yaxis: {
+            showLabels: false,
+
+          }
+        }
+      );
+    }
+
+    </script>
+
+
+
+      </section>
+
+      <section id="writing">
+        <p>  <a href="https://www.rottentomatoes.com/celebrity/leonardo_di_caprio/" target="_blank"> Source</a></p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p><a href="mailto:email">Your Name</a></p>
+      <p>JMM 692: Interactive Data Visualization</p>
+      <p>Spring 2018</p>
+    </footer>
+
+    <!--
+      Include necessary javascript libraries / scripts here (unless
+      noted otherwise; some libraries need to be added in <head>).
+      <script href="#"></script>
+    -->
+
+  </body>
+</html>
