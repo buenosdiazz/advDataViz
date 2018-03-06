@@ -209,7 +209,7 @@ footer p:last-child:after {
 */
 
 #chart {
-  background-color: #FFF;
+  /*background-color: #FFF;*/
   border: 1px dotted #ccc;
   width: 800px;
   height: 600px;
