@@ -170,8 +170,11 @@
           plotObj.setData(
             $.map(
               $.grep(source, function(obj) { return obj.show } ),
-              function(obj) { return { data: obj.data, color: obj.color }; }
-            )
+              function(obj) { return { data: obj.data, color: obj.color } }
+            ),
+
+                {xaxis: {tickDecimals: 0},}
+
           );
             
           plotObj.draw();
