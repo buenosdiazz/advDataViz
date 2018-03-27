@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Leaflet Notre Dame Map</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/leaflet.css" rel="stylesheet" />
+    <link href="css/leaflet-style.css" rel="stylesheet" />
+    
+  </head>
+ <body id="inner">
+
+    <header>
+      <h1>Data Visualization</h1>
+
+      <!--
+        An optional navigation ... you may want to include a link to
+        your personal portfolio, email, etc.
+      -->
+
+     <nav>
+        <ul>
+          <li><a href="http://carodiaz.co" target="_blank">Portfolio</a></li>
+          <li><a href="mailto:cdiaz17@miami.edu">Email</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <main>
+
+      <!--
+        It is not ideal to exclude a menu from inner pages, but the
+        focus is on data visualization, not site design. This
+        'breadcrumb' approach will keep things simple while the
+        site added to week-to-week, but considers the necessity to
+        to swap out the nav on each page (for the completed one on
+        'index.html') and make minor modifications to 'style.css' to
+        create a more robust site nav once all examples are complete.
+      -->
+
+      <nav>
+        <p>&laquo; <a href="index.html">Return home</a></p>
+      </nav>
+
+      
+        <p class="message">You need a browser which supports CSS Grid! Why not <a href="https://browsehappy.com/">download</a> one which does?</p>
+
+        <h2>Leaflet Notre Dame Map</h2>
+
+
+
+
+
+ <div id="map"></div>
+
+    <script src="js/leaflet.js"></script>
+    <script>
+
+        var ndMap = L.map("map").setView([41.699, -86.237], 15);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+            maxZoom: 18,
+        }).addTo(ndMap);
+
+        var mendoza = L.marker([41.696980816730765, -86.23629541401898]).addTo(ndMap);
+
+        mendoza.bindPopup("<a href = 'https://mendoza.nd.edu/'> <Mendoza College of Business> I studied marketing here! </a>")
+
+        var stadium = L.circle([41.69813473375674, -86.23383522033693],
+        {
+            color: "#002b5b",
+            fillColor: "#002b5b",
+            fillOpacity: 0.2,
+            radius: 150
+        }).addTo(ndMap)
+
+        stadium.bindPopup("Home of the Fighting Irish, this stadium has been around since 1930. I spent many football Saturdays here.  <img src = 'https://dailydomer.nd.edu/assets/211602/halfsize/sunset.jpg' alt= 'ND Stadium'/>")
+
+        var welshFam = L.polygon([
+           
+             [41.698623678623555, -86.24072061540573],
+             [41.69850351755987, -86.24020563127489],
+             [41.69771044890874, -86.2398837661931],
+             [41.69776928047211, -86.24056370290418],
+        ],
+                             {
+            color: "#00bfff",
+            fillColor: "#00bfff",
+            fillOpacity: .3
+        }).addTo(ndMap);
+        
+        welshFam.bindPopup("The women of Welsh Family originally lived in Siegfried Hall, now a men's dorm on Mod Quad. The residence hall was completed in 1997 when the women of Siegfried became Welsh Family Hall (Welsh Fam). Welsh Fam is located in 'West Quad' & is the home of the Whirlwinds")
+        
+         var riley = L.marker([41.70076657773743, -86.23666567378679]).addTo(ndMap);
+
+        riley.bindPopup("<a href = 'https://artdept.nd.edu/'> <Riley Art Building is where I took many of the classes for my Studio Art Minor </a>")
+        
+        var compton = L.circle([41.693856465646725, -86.23113776182437],
+        {
+            color: "#002b5b",
+            fillColor: "#002b5b",
+            fillOpacity: 0.2,
+            radius: 100
+        }).addTo(ndMap)
+
+        compton.bindPopup("This is where ND Men's Hockey play, they are playing in the Frozen Four Semifinals next week against University of Michigan. I also participated in Broomball RecSports here.")
+
+
+        function onMapClick(event){
+            console.log(event.latlng)
+        }
+
+        ndMap.on("click", onMapClick);
+      </script>
+
+
+
+      </section>
+
+      <section id="writing">
+        <p>Notre Dame is my Alma Mater. This map demonstrates places on campus where I spent most of my time while I was a student from 2011-2015.</p>
+      </section>
+
+    </main>
+
+   <footer>
+      <p>Carolina Diaz</p>
+      <p>JMM 692: Interactive Data Visualization</p>
+      <p>Spring 2018</p>
+    </footer>
+
+    <!--
+      Include necessary javascript libraries / scripts here (unless
+      noted otherwise; some libraries need to be added in <head>).
+      <script href="#"></script>
+    -->
+    </body>
+    
+ 
+</html>
+
+
