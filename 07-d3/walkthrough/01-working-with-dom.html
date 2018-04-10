@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>d3: Working with the DOM</title>
+  </head>
+
+  <body>
+
+    <p>Hello, world!</p>
+
+    <p>Hello, human!</p>
+
+    <script src="js/d3.min.js"></script>
+    <script>
+
+        var para = d3.select("p")
+        //or .selectAll("p") to select all paragraphs
+
+        para.style("font-family", "sans-serif")
+            .style("font-size", "36px")
+            .style("font-weight", "bold")
+            .style("color","blue");
+
+        var body = d3.select("body")
+            .append("p")
+            .text("Hello");
+    </script>
+  </body>
+</html>

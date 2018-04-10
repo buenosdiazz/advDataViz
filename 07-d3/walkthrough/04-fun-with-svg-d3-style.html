@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>d3: Fun with SVG (d3 style)</title>
+  </head>
+
+  <body>
+    <script src="js/d3.min.js"></script>
+    <script>
+
+      var svg = d3.select("body").append("svg");
+
+      svg.append("rect")
+         .attr("x", "10")
+         .attr("y", "10")
+         .attr("width", "100")
+         .attr("height", "50")
+         .attr("fill", "rgb(4,73,170)")
+
+      svg.append("circle")
+         .attr("cx", "30")
+         .attr("cy", "100")
+         .attr("r", "20")
+         .attr("fill", "rgb(220,85,148)")
+
+    </script>
+  </body>
+</html>
