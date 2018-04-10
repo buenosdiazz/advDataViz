@@ -26,6 +26,17 @@
       var randomData = [90, 60, 10, 20, 40, 80, 30, 60];
       var barWidth = 20;
 
+        var barChart = d3.select("svg")
+        .selectAll("g")
+        .data(randomData)
+        .enter()
+        .append("g")
+        .attr("transform", function(d,i){ return "translate(" + (i * barWidth) + "," + (280 - d) +  ")";})
+
+        barChart.append("rect")
+        .attr("width", barWidth - 1)
+        .attr("height", function(d) { return d + 20; })
+
     </script>
   </body>
 </html>

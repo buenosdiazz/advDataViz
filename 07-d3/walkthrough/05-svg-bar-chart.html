@@ -8,6 +8,27 @@
   <body>
     <script src="js/d3.min.js"></script>
     <script>
+
+        var svg = d3.select("body").append("svg");
+
+        var width = 200;
+        var height = 300;
+
+        svg.attr("width", width)
+           .attr("height", height);
+        var randomData = [90, 60, 10, 20, 40,80, 30, 60];
+        var barWidth = 20;
+
+        var barChart = d3.select("svg")
+        .selectAll("rect")
+        .data(randomData)
+        .enter()
+        .append("rect")
+        .attr("width", barWidth - 1)
+        .attr("height", function(d) {return d;})
+        .attr("transform", function(d, i) {
+                return "translate(" + (i * barWidth) + "," + (height - d) + ")"
+                                     })
     </script>
   </body>
 </html>
