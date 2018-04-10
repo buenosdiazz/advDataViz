@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Leaflet</title>
+    <link href="css/leaflet.css" rel="stylesheet" />
+    <link href="css/leaflet-map-overlay.css" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    <div id="map"></div>
+
+    <script src="js/leaflet.js"></script>
+    <script src="js/us-states.js"></script>
+    <script src="js/teams.js"></script>
+     <script>
+
+         function addColor(n) {
+             return n > 6 ? "#005825" :
+             n > 5 ? "#238b45" :
+             n > 4 ? "#41ae76" :
+             n > 3 ? "#66c2a4" :
+             n > 2 ? "#99d8c9" :
+             n > 1 ? "#ccece6" :
+             "#edf8fb"
+         }
+
+         function style(feature) {
+             return {
+                 fillColor: addColor(feature.properties.teams),
+                 weight: 2,
+                 opacity: 1,
+                 color: "#fffff",
+                 dashArray: "3",
+                 fillOpacity: 0.9
+             }
+         }
+
+        var stateCount = {};
+
+         for (i = 0; i < ncaaTeams.length; i++){
+             var state = ncaaTeams[i]["state"];
+             if (stateCount[state]){
+                 stateCount[state] += 1;
+             } else {
+                 stateCount[state]= 1
+             }
+         }
+
+         console.log(stateCount)
+
+
+        for (i = 0; i < statesData["features"].length; i++) {
+            var state = statesData["features"][i]["properties"]["name"]
+            statesData["features"][i]["properties"]["teams"]= stateCount[state] || 0;
+        }
+
+         console.log(statesData["features"]);
+
+
+        var map = L.map("map").setView([38.01, -95.84], 4 );
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                   {
+            maxZoom: 15
+        }).addTo(map);
+
+        L.geoJson(statesData, {style: style}).addTo(map);
+      </script>
+  </body>
+</html>

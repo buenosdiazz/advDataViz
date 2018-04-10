@@ -17,11 +17,6 @@
     <header>
       <h1>Data Visualization</h1>
 
-      <!--
-        An optional navigation ... you may want to include a link to
-        your personal portfolio, email, etc.
-      -->
-
      <nav>
         <ul>
           <li><a href="http://carodiaz.co" target="_blank">Portfolio</a></li>
@@ -133,8 +128,7 @@
           $.map(
             $.grep(source, function(obj) { return obj.show; }),
             function(obj) { return { data: obj.data, color: obj.color }}
-          )
-        );
+          ) );
 
 
 
@@ -162,9 +156,6 @@
             return { data: obj.data, color: obj.color };
           });
 
-    
-
-          console.log(source);
 
 
           plotObj.setData(
@@ -187,13 +178,12 @@
 
          
 
-   
-
-
       </section>
 
       <section id="writing">
-        <p>  <a href="https://www.the-numbers.com/market/" target="_blank"> Source</a></p>
+        <p>
+        This chart demonstrates the number of wide releases for each of the six major Hollywood studios (i.e. Warners, Disney, Fox, Paramount, Sony and Universal) from 1995 - 2018. As you can see in the graph, Disney in particular has reduced the number of wide releases. In 1995 they released 27 movies while in 2017 they only released 7. <br>
+        <a href="https://www.the-numbers.com/market/" target="_blank"> Source</a></p>
       </section>
 
     </main>
