@@ -39,10 +39,17 @@
         .attr("height", function(d) { return d + 10; });
 
       barChart.append("text")
-        .attr("x", function(d) { barWidth * d })
+       // .attr("x", function(d) { barWidth * d })
         .attr("y", function(d) { return d + 5; })
         .attr("dx", ".2em")
         .text(function(d) { return d; });
+
+        barChart.on("mouseover", function(){
+            d3.select(this.children[1]).style("fill", "#FFF")
+        })
+        .on("mouseout", function(){
+            d3.select(this.children[1]).style("fill", null)
+        })
 
     </script>
   </body>

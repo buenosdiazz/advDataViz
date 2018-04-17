@@ -5,7 +5,7 @@
     <title>d3: SVG Bar Chart with Text</title>
     <style>
 
-      svg g:hover text {
+      svg text {
         fill: #fff;
         font-family: sans-serif;
         font-size: 12px;
@@ -36,6 +36,13 @@
         barChart.append("rect")
         .attr("width", barWidth - 1)
         .attr("height", function(d) { return d + 20; })
+
+        barChart.append("text")
+        .attr("x", function(d) {barWidth * d})
+        .attr("y", function(d) {return d+ 5; })
+        .attr("dx", ".2em")
+        .text(function(d) {return d; })
+
 
     </script>
   </body>

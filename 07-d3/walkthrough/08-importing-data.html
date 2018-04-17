@@ -8,6 +8,9 @@
   <body>
     <script src="js/d3.min.js"></script>
     <script>
+        d3.tsv("data/scores.tsv", function(data){
+            console.log(data.runs)
+        })
     </script>
   </body>
 </html>
