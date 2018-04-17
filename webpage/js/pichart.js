@@ -18,7 +18,7 @@ var arc2 = d3.arc()
     .outerRadius(radius - 5)
     .innerRadius(radius - 95);
 
-// arc for the labels position
+// arc for the label positions
 var labelArc = d3.arc()
     .outerRadius(radius - 40)
     .innerRadius(radius - 40);
@@ -133,7 +133,7 @@ svg.call(tool_tip2);
 
 });
 
-// Helper function for animation of pie chart and donut chart
+// Helper function for animation of charts
 function tweenPie(b) {
   b.innerRadius = 0;
   var i = d3.interpolate({startAngle: 0, endAngle: 0}, b);
