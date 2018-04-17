@@ -15,13 +15,15 @@ var arc = d3.arc()
 
 // donut chart arc
 var arc2 = d3.arc()
-    .outerRadius(radius - 10)
-    .innerRadius(radius - 70);
+    .outerRadius(radius - 5)
+    .innerRadius(radius - 95);
 
 // arc for the labels position
 var labelArc = d3.arc()
     .outerRadius(radius - 40)
     .innerRadius(radius - 40);
+
+
 
 // pie generator
 var pie = d3.pie()
@@ -53,6 +55,7 @@ d3.csv("Animal_Services.csv", function(error, data) {
         d.category = d.category;
     })
 
+
       // append g
       var g = svg.selectAll(".arc")
         .data(pie(data))
@@ -61,14 +64,37 @@ d3.csv("Animal_Services.csv", function(error, data) {
 
       // append the arc path
       g.append("path")
-        .attr("d",arc)
-        .style("fill", "blue")
+      .attr("d", arc)
+      .style("fill", function(d) { return color(d.data.category); })
+
+    // transition
+    .transition()
+      .ease(d3.easeLinear)
+      .duration(2000)
+      .attrTween("d", tweenPie);
 
       // append labels
-      g.append("text")
+      /*
+    g.append("text")
         .attr("transform", function (d) { return "translate(" + labelArc.centroid(d) + ")"; })
         .attr("dy", ".35em")
-        .text(function(d) {return d.data.category;})
+        .text(function(d) {return d.data.category + ": " + d.data.count/235585 *100 +"%";})
+    */
+
+    //tool tip
+var tool_tip = d3.tip()
+      .attr("class", "d3-tip")
+      .offset([-8, 0])
+      .html(function(d) { return d.data.category + ": " + d.data.count; });
+svg.call(tool_tip);
+
+var tool_tip2 = d3.tip()
+      .attr("class", "d3-tip")
+      .offset([-8, 0])
+      .html(function(d) { return d.data.category + ": " + d.data.count/235585 *100 +"%";});
+svg.call(tool_tip2);
+
+
    // "g element is a container used to group other SVG elements"
   var g2 = svg2.selectAll(".arc2")
       .data(pie(data))
@@ -84,14 +110,24 @@ d3.csv("Animal_Services.csv", function(error, data) {
       .duration(2000)
       .attrTween("d", tweenDonut);
 
+
    // append text
-  g2.append("text")
+/*
+    g2.append("text")
     .transition()
       .ease(d3.easeLinear)
       .duration(2000)
     .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
       .attr("dy", ".35em")
-      .text(function(d) { return d.data.category; });
+      .text(function(d) { return d.data.count / 235585*100 +"%" ; });
+    */
+
+
+    g2.on('mouseover', tool_tip.show)
+      .on('mouseout', tool_tip.hide);
+
+    g.on('mouseover', tool_tip2.show)
+      .on('mouseout', tool_tip2.hide);
 
 
 
