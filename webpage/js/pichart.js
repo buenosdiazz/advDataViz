@@ -13,7 +13,6 @@ var arc = d3.arc()
     .outerRadius(radius -10)
     .innerRadius(0);
 
-
 // donut chart arc
 var arc2 = d3.arc()
     .outerRadius(radius - 10)
@@ -94,6 +93,8 @@ d3.csv("Animal_Services.csv", function(error, data) {
       .attr("dy", ".35em")
       .text(function(d) { return d.data.category; });
 
+
+
 });
 
 // Helper function for animation of pie chart and donut chart
@@ -108,4 +109,6 @@ function tweenDonut(b) {
   var i = d3.interpolate({startAngle: 0, endAngle: 0}, b);
   return function(t) { return arc2(i(t)); };
 }
+
+
 
