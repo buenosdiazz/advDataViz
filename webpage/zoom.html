@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Annual Top 20 Movies By Rating</title>
+    <link href="css/selecting-content.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <script src="js/flotr2.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.flot.min.js"></script>
+  </head>
+
+
+  <body id="inner">
+
+    <header>
+      <h1>Data Visualization</h1>
+
+     <nav>
+        <ul>
+          <li><a href="http://carodiaz.co" target="_blank">Portfolio</a></li>
+          <li><a href="mailto:cdiaz17@miami.edu">Email</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <main>
+
+
+      <nav>
+        <p>&laquo; <a href="index.html">Return home</a></p>
+      </nav>
+
+      <section id="example">
+        <p class="message">You need a browser which supports CSS Grid! Why not <a href="https://browsehappy.com/">download</a> one which does?</p>
+
+        <h2>Annual Top 20 Movies By Rating (1985-2017)</h2>
+
+
+
+
+
+         <div id="wrapper">
+      <h1>Annual Top 20 Movies By Rating (1985-2017)</h1>
+
+      <div id="chart"></div>
+
+    <button id="reset">Reset Zoom</button>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.flot.min.js"></script>
+
+    <script src="js/jquery.flot.selection.min.js"></script>
+
+    <script>
+
+      $(function() {
+        var g = [
+[1985, 0],
+[1986, 1],
+[1987, 0],
+[1988, 2],
+[1989, 1],
+[1990, 0],
+[1991, 2],
+[1991, 2],
+[1992, 1],
+[1993, 0],
+[1994, 1],
+[1996, 2],
+[1997, 1],
+[1998, 3],
+[1999, 2],
+[2000, 0],
+[2001, 2],
+[2002, 1],
+[2003, 1],
+[2004, 1],
+[2005, 1],
+[2006, 1],
+[2007, 1],
+[2008, 2],
+[2009, 0],
+[2010, 2],
+[2011, 3],
+[2012, 0],
+[2013, 0],
+[2014, 0],
+[2015, 0],
+[2016, 0],
+[2017, 0]
+        ];
+                var pg = [
+[1985, 10],
+[1986, 5],
+[1987, 3],
+[1988, 6],
+[1989, 9],
+[1990, 6],
+[1991, 6],
+[1991, 5],
+[1992, 3],
+[1993, 5],
+[1994, 4],
+[1996, 4],
+[1997, 4],
+[1998, 3],
+[1999, 3],
+[2000, 3],
+[2001, 4],
+[2002, 6],
+[2003, 3],
+[2004, 6],
+[2005, 4],
+[2006, 4],
+[2007, 5],
+[2008, 4],
+[2009, 10],
+[2010, 9],
+[2011, 4],
+[2012, 6],
+[2013, 5],
+[2014, 4],
+[2015, 6],
+[2016, 8],
+[2017, 5]
+        ];
+        var pgT = [
+[1985, 6],
+[1986, 6],
+[1987, 5],
+[1988, 3],
+[1989, 5],
+[1990, 6],
+[1991, 7],
+[1991, 6],
+[1992, 2],
+[1993, 7],
+[1994, 7],
+[1996, 5],
+[1997, 8],
+[1998, 9],
+[1999, 7],
+[2000, 12],
+[2001, 10],
+[2002, 13],
+[2003, 11],
+[2004, 10],
+[2005, 13],
+[2006, 13],
+[2007, 11],
+[2008, 10],
+[2009, 8],
+[2010, 5],
+[2011, 11],
+[2012, 12],
+[2013, 10],
+[2014, 12],
+[2015, 11],
+[2016, 11],
+[2017, 12]
+        ];
+               var r = [
+[1985, 4],
+[1986, 8],
+[1987, 12],
+[1988, 9],
+[1989, 5],
+[1990, 8],
+[1991, 6],
+[1991, 7],
+[1992, 14],
+[1993, 8],
+[1994, 8],
+[1996, 9],
+[1997, 7],
+[1998, 5],
+[1999, 8],
+[2000, 5],
+[2001, 4],
+[2002, 0],
+[2003, 5],
+[2004, 3],
+[2005, 2],
+[2006, 2],
+[2007, 3],
+[2008, 4],
+[2009, 2],
+[2010, 4],
+[2011, 2],
+[2012, 2],
+[2013, 5],
+[2014, 4],
+[2015, 3],
+[2016, 1],
+[2017, 3]
+        ];
+        var source = [
+          {
+            data: g,
+            show: true,
+            color: "#B6ED47",
+            label: "Rated G"
+          },
+          {
+            data: pg,
+            show: true,
+            color: "#FF9B71",
+            label: "Rated PG"
+          },
+          {
+            data: pgT,
+            show: true,
+            color: "#2374AB",
+            label: "Rated PG-13"
+          },
+          {
+            data: r,
+            show: true,
+            color: "#A50000",
+            label: "Rated R",
+          },
+
+        ];
+        var $el = $("#chart");
+
+        var options = {
+          legend: { position: "nw" },
+          selection: { mode: "xy" }
+        }
+
+        var plotObj = $.plot($el, source, options);
+
+        $el.on("plotselected", function(event, ranges) {
+          plotObj = $.plot($el, source,
+            $.extend(true, {}, options, {
+              xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to },
+              yaxis: { min: ranges.yaxis.from, max: ranges.yaxis.to }
+            })
+          );
+        });
+
+        $("#reset").click(function() {
+          plotObj = $.plot($el, source, options);
+        });
+      });
+    </script>
+
+
+      </section>
+
+      <section id="writing">
+        <p>
+     This chart demonstrates the ratings of the top 20 movies for each year from 1985-2017. Some interesting takeaways from the chart:
+      <ul>
+      <li>There have been no G-rated movies in the top twenty since 2011.</li>
+         <li>In 1992, 14 of the top 20 movies were R-rated films </li>
+            <li>In 2002, there were no R-rated movies in the top 20</li>
+            <li>Since the late 1990s, on average the number of PG-13 movies in the top 20 has increased</li>
+      </ul>
+       <br>
+        <a href="http://www.natoonline.org/data/annual-top-20-movies-by-rating/" target="_blank"> Source</a></p>
+      </section>
+
+    </main>
+
+   <footer>
+      <p>Carolina Diaz</p>
+      <p>JMM 692: Interactive Data Visualization</p>
+      <p>Spring 2018</p>
+    </footer>
+
+
+  </body>
+</html>

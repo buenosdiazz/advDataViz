@@ -57,7 +57,9 @@
 
 
 
+ var riley = L.marker([41.70076657773743, -86.23666567378679]).addTo(ndMap);
 
+        riley.bindPopup("Riley Art Building is where I took many of the classes for my Studio Art Minor.")
 
         var mendoza = L.marker([41.696980816730765, -86.23629541401898]).addTo(ndMap);
 
@@ -71,7 +73,7 @@
             radius: 150
         }).addTo(ndMap)
 
-        stadium.bindPopup("Home of the Fighting Irish, this stadium has been around since 1930. I spent many football Saturdays here.  <img src = 'https://dailydomer.nd.edu/assets/211602/halfsize/sunset.jpg' alt= 'ND Stadium'/>")
+        stadium.bindPopup("Home of the Fighting Irish, this stadium has been around since 1930. I spent many football Saturdays here.<Br>  <img src = 'https://dailydomer.nd.edu/assets/211602/halfsize/sunset.jpg' width= 250 alt= 'ND Stadium'/>")
 
         var welshFam = L.polygon([
            
@@ -88,9 +90,7 @@
         
         welshFam.bindPopup("The women of Welsh Family originally lived in Siegfried Hall, now a men's dorm on Mod Quad. The residence hall was completed in 1997 when the women of Siegfried became Welsh Family Hall (Welsh Fam). Welsh Fam is located in 'West Quad' & is the home of the Whirlwinds")
         
-         var riley = L.marker([41.70076657773743, -86.23666567378679]).addTo(ndMap);
 
-        riley.bindPopup("<a href = 'https://artdept.nd.edu/'> <Riley Art Building is where I took many of the classes for my Studio Art Minor </a>")
         
         var compton = L.circle([41.693856465646725, -86.23113776182437],
         {
