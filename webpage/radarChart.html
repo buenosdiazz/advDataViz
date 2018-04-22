@@ -42,12 +42,7 @@
     <script src="js/flotr2.min.js"></script>
     <script>
     var actors = [
-      {
-        actor: "Meryl Streep",
-        oscars: 3,
-        goldenglobes: 9,
-        emmys: 3,
-      },
+
       {
         actor: "Robert De Niro",
         oscars: 2,
@@ -60,19 +55,20 @@
         goldenglobes: 2,
         emmys: 0,
       },
-     {
-        actor: "Denzel Washington",
-        oscars: 2,
-        goldenglobes: 3,
-        emmys: 0,
+            {
+        actor: "Meryl Streep",
+        oscars: 3,
+        goldenglobes: 9,
+        emmys: 3,
       },
+
 
     ]
 
     var all = {
-      oscars: 10,
-      goldenglobes: 16,
-      emmys: 3
+      oscars: 8,
+        goldenglobes: 13,
+          emmys: 3,
 
     }
 
@@ -104,21 +100,20 @@
       Flotr.draw(
         document.getElementById("chart"),
         [
-          actorData("Meryl Streep"),
-          actorData("Robert De Niro"),
-          actorData("Daniel Day-Lewis"),
-          actorData("Denzel Washington"),
+           actorData("Meryl Streep"),
+            actorData("Daniel Day-Lewis"),
+       actorData("Robert De Niro"),
 
         ],
+
         {
           title: "Award Winners",
           radar: { show: true },
           grid: { circular: true },
           xaxis: { ticks: labels },
-          yaxis: {
-            showLabels: false,
+          yaxis: { showLabels: false},
+        colors: [ "#85FFC7","#C33C54","#297373"]
 
-          }
         }
       );
     }
@@ -130,7 +125,7 @@
       </section>
 
       <section id="writing">
-        <p>This chart represents the award counts for critically acclaimed actors Meryl Streep, Robert De Niro, Daniel Day-Lewis, and Denzel Washington. This radar chart demonstrates that Meryl Streep has the most awards in almost all award categories with 3 Oscars, 9 Golden Globes, and 3 Emmys.   <a href="https://www.rottentomatoes.com" target="_blank"> Source</a></p>
+        <p>This chart represents the award counts for critically acclaimed actors Meryl Streep, Robert De Niro, and Daniel Day-Lewis. This radar chart demonstrates that Meryl Streep has the most awards in almost all award categories with 3 Oscars, 9 Golden Globes, and 3 Emmys.   <a href="https://www.rottentomatoes.com" target="_blank"> Source</a></p>
       </section>
 
     </main>
