@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Data Visualization | Title of Example</title>
+    <link href="css/style.css" rel="stylesheet" />
+
+
+  </head>
+
+
+  <body id="inner">
+
+    <header>
+      <h1>Data Visualization</h1>
+
+
+       <nav>
+        <ul>
+          <li><a href="http://carodiaz.co" target="_blank">Portfolio</a></li>
+          <li><a href="mailto:cdiaz17@miami.edu">Email</a></li>
+        </ul>
+      </nav>
+
+
+    </header>
+
+    <main>
+
+
+      <nav>
+        <p>&laquo; <a href="index.html">Return home</a></p>
+      </nav>
+
+      <section id="example">
+        <p class="message">You need a browser which supports CSS Grid! Why not <a href="https://browsehappy.com/">download</a> one which does?</p>
+
+        <h2>People in Space</h2>
+
+
+
+        <p id="total"></p>
+
+        <table id="spacePeople">
+        <tr>
+        <th>Craft</th>
+    <th>Name</th>
+</tr>
+</table>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/underscore.min.js"></script>
+    <script>
+
+      $.getJSON("http://api.open-notify.org/astros.json",
+
+        function(data) {
+
+          var total =   document.getElementById('total')
+          var number = data.people.length;
+        total.append("There are " + number + " people in space:")
+
+
+
+          _(data.people).each(
+            function(person) {
+                var tr =  document.createElement('tr');
+              var craft = document.createElement('td');
+              craft.append(person.craft);
+              var name = document.createElement('td');
+              name.append(person.name);
+              document.getElementById('spacePeople').append(tr, craft, name,);
+            }
+          );
+
+        }
+      );
+
+    </script>
+
+
+      </section>
+
+      <section id="writing">
+        <p>In this exercise I practiced using underscore.js to isolate data from an API called astros.js. This API is a JSON feed that lists the astronauts currently in space. The table above lists the information for astronauts currently in space including the name of the space craft they are on and their names. </p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>Carolina Diaz</p>
+      <p>JMM 692: Interactive Data Visualization</p>
+      <p>Spring 2018</p>
+    </footer>
+
+
+  </body>
+</html>

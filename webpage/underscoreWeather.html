@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>This Week's Weather</title>
+    <link href="css/style.css" rel="stylesheet" />
+
+
+  </head>
+
+
+  <body id="inner">
+
+    <header>
+      <h1>Data Visualization</h1>
+
+
+           <nav>
+        <ul>
+          <li><a href="http://carodiaz.co" target="_blank">Portfolio</a></li>
+          <li><a href="mailto:cdiaz17@miami.edu">Email</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <main>
+
+
+      <nav>
+        <p>&laquo; <a href="index.html">Return home</a></p>
+      </nav>
+
+      <section id="example">
+        <p class="message">You need a browser which supports CSS Grid! Why not <a href="https://browsehappy.com/">download</a> one which does?</p>
+
+        <h2>This Week's Weather</h2>
+
+<p id= "city"> </p>
+
+  <table id="forecast">
+        <tr>
+        <th>Date</th>
+    <th>Temperature</th>
+    <th> Forecast</th>
+</tr>
+</table>
+
+    <script src="js/zepto.min.js"></script>
+    <script src="js/underscore.min.js"></script>
+    <script>
+
+
+      $.getJSON("https://api.weather.gov/points/25.7593,-80.2029",
+        function(data){
+
+          var city = data.properties.relativeLocation.properties.city;
+      document.getElementById('city').append("This is the Weather Forcast for " + city +":" )
+
+
+
+
+
+          $.getJSON(data.properties.forecast,
+            function(forecast) {
+
+         _(forecast.properties.periods).each(
+         function(item) {
+       var tr =  document.createElement('tr');
+              var date = document.createElement('td');
+              date.append(item.name);
+              var temp = document.createElement('td');
+              temp.append(item.temperature + item.temperatureUnit);
+              var dForecast = document.createElement('td');
+              dForecast.append(item.detailedForecast);
+              document.getElementById('forecast').append(tr, date, temp, dForecast );
+         }
+         )
+
+      })
+
+         })
+</script>
+
+
+
+
+
+      </section>
+
+      <section id="writing">
+        <p>For this exercise I used the National Weather Service's publicly accessible API and underscore.js to create a widget that includes the forecast for the current day and the upcoming week. I  was able to find the API data for my area by adding my own latitude and longitude values to the URL https://api.weather.gov/points/. I used the coordinates for Brickell ("Miami") (25.7593239,-80.2116203).
+
+     </p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>Carolina Diaz</p>
+      <p>JMM 692: Interactive Data Visualization</p>
+      <p>Spring 2018</p>
+    </footer>
+
+
+  </body>
+</html>

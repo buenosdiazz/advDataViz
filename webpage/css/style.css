@@ -8,13 +8,19 @@
   Jan. 2018, v. 1.0
 
 */
+
+table, th, td {
+    border: 1px solid black;
+    padding: 6px;
+}
+
  .d3-tip {
       line-height: 1;
       padding: 6px;
       background: rgba(0, 0, 0, 0.8);
       color: #fff;
       border-radius: 4px;
-      font-size: 12px;
+      font-size: 13px;
     }
 
     /* Creates a small triangle extender for the tooltip */
@@ -30,7 +36,7 @@
       text-align: center;
     }
 
-    /* Style northward tooltips specifically */
+    /* Style tooltips  */
     .d3-tip.n:after {
       margin: -2px 0 0 0;
       top: 100%;
