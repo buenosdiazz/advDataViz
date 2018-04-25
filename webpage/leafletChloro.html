@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Leaflet Notre Dame Map</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/leaflet.css" rel="stylesheet" />
+    <link href="css/leaflet-style.css" rel="stylesheet" />
+     <link href="css/leaflet-map-overlay.css" rel="stylesheet" />
+     <link href="css/leaflet-map-legend.css" rel="stylesheet" />
+
+
+  </head>
+ <body id="inner">
+
+    <header>
+      <h1>Data Visualization</h1>
+
+
+     <nav>
+        <ul>
+          <li><a href="http://carodiaz.co" target="_blank">Portfolio</a></li>
+          <li><a href="mailto:cdiaz17@miami.edu">Email</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <main>
+
+
+
+      <nav>
+        <p>&laquo; <a href="index.html">Return home</a></p>
+      </nav>
+
+
+        <p class="message">You need a browser which supports CSS Grid! Why not <a href="https://browsehappy.com/">download</a> one which does?</p>
+
+        <h2>Leaflet Notre Dame Map</h2>
+
+
+
+
+
+ <div id="map"></div>
+   <script src="js/leaflet.js"></script>
+    <script src="js/us-states.js"></script>
+    <script src="js/states.js"></script>
+
+       <scrip>
+             <script>
+
+      function addColor(n) {
+        return  n > 6 ? "#005824" :
+                n > 5 ? "#238b45" :
+                n > 4 ? "#41ae76" :
+                n > 3 ? "#66c2a4" :
+                n > 2 ? "#99d8c9" :
+                n > 1 ? "#ccece6" :
+                        "#edf8fb"
+      };
+
+      function style(feature) {
+      	return {
+          fillColor: addColor(feature.properties.teams),
+          weight: 2,
+          opacity: 1,
+          color: "#eeeeee",
+          dashArray: '3',
+          fillOpacity: 0.9
+        };
+      };
+
+
+      var stateCount = {};
+
+      for (i = 0; i < ncaaTeams.length; i++) {
+        var state = ncaaTeams[i]["state"];
+        if (stateCount[state]) {
+          stateCount[state] += 1;
+        } else {
+          stateCount[state] = 1;
+        }
+      }
+
+      for (i = 0; i < statesData["features"].length; i++) {
+      	var state = statesData["features"][i]["properties"]["name"];
+      	statesData["features"][i]["properties"]["teams"] = stateCount[state] || 0;
+      }
+
+
+      // Leaflet setup
+      var map = L.map("map").setView([38.01, -95.84], 4);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      	maxZoom: 15,
+      	attribution: "&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+      }).addTo(map);
+
+      // Add GeoJSON overlay
+      L.geoJson(statesData, {style: style}).addTo(map);
+
+
+
+        var legend = L.control({position: "bottomright"});
+
+        legend.onAdd = function(map){
+
+            var div = L.DomUtil.create("div", "info legend")
+            var teams = [1, 2, 3, 4, 5, 7]
+
+            for (i = 0; i < teams.length; i++){
+                div.innerHTML +=
+                    "<span style='background: " + addColor(teams[i]) + "'></span> " + teams[i] + "<br/>";
+            }
+
+            return div;
+        }
+          legend.addTo(map);
+
+    </script>
+       </scrip>
+
+
+
+
+
+
+      <section id="writing">
+        <p>Notre Dame is my Alma Mater. This map demonstrates places on campus where I spent most of my time while I was a student from 2011-2015.</p>
+      </section>
+
+    </main>
+
+   <footer>
+      <p>Carolina Diaz</p>
+      <p>JMM 692: Interactive Data Visualization</p>
+      <p>Spring 2018</p>
+    </footer>
+
+
+    </body>
+
+
+</html>
+
+
