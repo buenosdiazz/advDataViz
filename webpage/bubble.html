@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bourne Movie Series Bubble Chart</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/flotr2.min.js"></script>
+  </head>
+
+
+  <body id="inner">
+
+    <header>
+      <h1>Data Visualization</h1>
+
+
+     <nav>
+        <ul>
+          <li><a href="http://carodiaz.co" target="_blank">Portfolio</a></li>
+          <li><a href="mailto:cdiaz17@miami.edu">Email</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <main>
+
+      <nav>
+        <p>&laquo; <a href="index.html">Return home</a></p>
+      </nav>
+
+      <section id="example">
+        <p class="message">You need a browser which supports CSS Grid! Why not <a href="https://browsehappy.com/">download</a> one which does?</p>
+
+        <h2>Bourne Movie Series Bubble Chart</h2>
+
+
+
+
+        <div id="chart">
+          <p>An example goes here.</p>
+        </div>
+
+  <script src="js/underscore.min.js"></script>
+    <script>
+
+      var bourneUlt = [
+          { rating: 93, year: 2007, money: 227 },
+      ];
+
+           var bourneSup = [
+           { rating: 81, year: 2004, money: 176 },
+      ];
+
+           var jasonBourne = [
+           { rating: 55, year: 2016, money: 162 },
+
+
+      ];
+           var bourneIdentity = [
+           { rating: 83, year: 2002, money: 121 },
+
+      ];
+           var bourneLeg = [
+           { rating: 56, year: 2012, money: 113 },
+
+      ];
+
+
+      function getPoints(source) {
+        var result = [];
+
+        _(source).each(
+          function(data) {
+            result.push([(data.year), data.rating, data.money]);
+          }
+        );
+
+        return result;
+      }
+
+
+      window.onload = function() {
+        Flotr.draw(
+          document.getElementById("chart"),
+           [
+         { data: getPoints(bourneIdentity),
+          label: "The Bourne Identity",
+          bubbles: {show: true, baseRadius: 0.2}, color: "#E88873",},
+
+        { data: getPoints(bourneSup),
+          label: "The Bourne Supremacy",
+          bubbles: {show: true, baseRadius: 0.2}, color: "#0EAD69",},
+
+        { data: getPoints(bourneUlt),
+          label: "The Bourne Ultimatum",
+          bubbles: {show: true, baseRadius: 0.2}, color: "#2D3047",},
+
+        { data: getPoints(bourneLeg),
+          label: "The Bourne Legacy",
+          bubbles: {show: true, baseRadius: 0.2}, color: "#2374AB",},
+
+        { data: getPoints(jasonBourne),
+          label: "Jason Bourne",
+          bubbles: {show: true, baseRadius: .2}, color: "#B6ED47",},
+  ],
+
+
+
+
+          {
+            xaxis: {
+              min: 2000,
+              max: 2020,
+                 title: "Year",
+
+            },
+              HtmlText: false,
+            yaxis: {
+              min: 0,
+              max: 100,
+            title: "Rotten Tomato Score",
+            titleAngle: 90,
+                showLabels: true,
+            },
+            grid: {
+
+              horizontalLines: false,
+              verticalLines: false
+            },
+             legend: {
+    position: "ne"
+  }
+
+          }
+        );
+      }
+    </script>
+
+      </section>
+
+      <section id="writing">
+        <p>This bubble chart compares the different movies in the Bourne series by Rotten Tomato score and gross ticket sales in millions of US dollars. The size of the bubbles represents the amount of money each film made. As you can see, The Bourne Ultimatum has the largest bubble an made the most box office revenue with $227,471,070. <a href="http://www.boxofficemojo.com/franchises/chart/?view=main&id=bourne.htm&p=.htm"target="_blank"> Source</a> </p>
+           <p> Javascript library used to build this chart: <a href="http://www.humblesoftware.com/flotr2/"target="_blank"> flotr2</a></p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>Carolina Diaz</p>
+      <p>JMM 692: Interactive Data Visualization</p>
+      <p>Spring 2018</p>
+    </footer>
+
+
+  </body>
+</html>

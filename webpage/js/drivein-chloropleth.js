@@ -1,5 +1,4 @@
-// leaflet-map-chloropleth.js
-
+// drivein-chloropleth.js
 
 function addColor(n) {
   return  n > 25 ? "#262240" :
@@ -107,7 +106,6 @@ legend.onAdd = function(map) {
 legend.addTo(map);
 
 
-
 //INFORMATION BOX
 
 var info = L.control();
@@ -118,7 +116,6 @@ info.onAdd = function(map) {
   return this.div;
 };
 
-// update the info box based on data
 info.update = function(properties) {
   this.div.innerHTML = "<p>Number of Open Drive-In Theaters</p>" + (properties ?
   "<p><strong>State</strong>: " + properties.name +"</p>" +
