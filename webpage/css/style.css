@@ -140,8 +140,10 @@ footer p:last-child:after {
   padding: 0;
 }
 
-
-
+#map {
+  width: 400px;
+  height: 400px;
+}
 
 
 /* INNER-PAGE */

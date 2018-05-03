@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HeatMap Zipcodes</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/leaflet.css" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    <h1>Stray Dog Pick Up Calls 2017- by Zipcode</h1>
+
+    <div id="map"></div>
+
+    <script src="js/leaflet.js"></script>
+    <script src="js/leaflet-heat.js"></script>
+      <script src="js/straydata.js"></script>
+    <script>
+
+      var miamiDade = L.map("map").setView([25.612552, -80.379380], 10);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      	maxZoom: 20,
+      	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(miamiDade);
+
+
+      // 311 - Stray Dog Pick Up Calls 2017
+      var heatLayer = L.heatLayer(strayData, {
+        max: 133,
+        minOpacity: 0.5,
+        radius: 25,
+        gradient: {
+          0.3: "#0066CC",
+          0.6: "#669933",
+          0.9: "#FB2C08"
+        }
+      }).addTo(miamiDade);
+
+    </script>
+
+  </body>
+</html>
